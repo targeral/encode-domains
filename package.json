@@ -1,12 +1,12 @@
 {
   "name": "encode-domains",
   "version": "0.1.0",
-  "types": "./dist/types/index.d.ts",
-  "main": "./dist/lib/index.js",
-  "module": "./dist/es/index.js",
+  "types": "./lib/cli.d.ts",
+  "main": "./lib/cli.js",
   "exports": {
-    ".": "./dist/cli",
-    "./babel-plugin": "./dist/babel-plugin"
+    ".": "./lib/cli.js",
+    "./babel-plugin": "./lib/babel-plugin.js",
+    "./webpack-plugin": "./lib/webpack-plugin.js"
   },
   "scripts": {
     "prepare": "modern build && husky install",
@@ -37,23 +37,26 @@
   ],
   "dependencies": {
     "@babel/core": "^7.23.2",
-    "@modern-js/utils": "^2.37.0"
+    "@modern-js/utils": "^2.37.0",
+    "webpack-sources": "^3.2.3"
   },
   "devDependencies": {
     "@modern-js-app/eslint-config": "2.37.0",
     "@modern-js/eslint-config": "2.37.0",
     "@modern-js/module-tools": "2.37.0",
+    "@modern-js/plugin-testing": "2.37.0",
     "@modern-js/tsconfig": "2.37.0",
     "@types/babel__core": "^7.20.3",
     "@types/jest": "~29.2.4",
     "@types/node": "~16.11.7",
     "@types/react": "~18.0.26",
+    "@types/webpack-sources": "^3.2.2",
     "husky": "~8.0.1",
     "lint-staged": "~13.1.0",
     "prettier": "~2.8.1",
     "rimraf": "~3.0.2",
     "typescript": "~5.0.4",
-    "@modern-js/plugin-testing": "2.37.0"
+    "webpack": "^5.89.0"
   },
   "sideEffects": [],
   "publishConfig": {

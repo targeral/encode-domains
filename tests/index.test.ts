@@ -16,4 +16,19 @@ describe('Default cases', () => {
     expect(s).toMatchSnapshot();
     expect(s).toContain(expectCode);
   });
+
+  // TODO: implement
+  test(`const urlObj = true ? 'https://example.com' : 'b'}`, async () => {
+    const code = `const urlObj = {a: '//example.com'}`;
+    const s = await transformCodeAsync(code);
+    expect(s).toMatchSnapshot();
+  });
+
+  test(`const urlObj = {a: '//example.com'}`, async () => {
+    const code = `const urlObj = {a: '//example.com'}`;
+    const s = await transformCodeAsync(code, { urls: ['//example.com'] });
+    expect(s).toMatchSnapshot();
+  });
+
+  // TODO: webpack test
 });

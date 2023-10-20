@@ -2,8 +2,20 @@
 
 exports[`Default cases const url = 'https://example.com' 1`] = `"const url = atob("aHR0cHM6Ly9leGFtcGxlLmNvbQ==");"`;
 
+exports[`Default cases const urlObj = {a: '//example.com'} 1`] = `
+"const urlObj = {
+  a: atob("Ly9leGFtcGxlLmNvbQ==")
+};"
+`;
+
 exports[`Default cases const urlObj = {a: 'https://example.com'} 1`] = `
 "const urlObj = {
   a: atob("aHR0cHM6Ly9leGFtcGxlLmNvbQ==")
+};"
+`;
+
+exports[`Default cases const urlObj = true ? 'https://example.com' : 'b'} 1`] = `
+"const urlObj = {
+  a: '//example.com'
 };"
 `;
