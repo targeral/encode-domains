@@ -1,0 +1,68 @@
+{
+  "name": "encode-domains",
+  "version": "0.1.0",
+  "types": "./dist/types/index.d.ts",
+  "main": "./dist/lib/index.js",
+  "module": "./dist/es/index.js",
+  "exports": {
+    ".": "./dist/cli",
+    "./babel-plugin": "./dist/babel-plugin"
+  },
+  "scripts": {
+    "prepare": "modern build && husky install",
+    "dev": "modern dev",
+    "build": "modern build",
+    "build:watch": "modern build -w",
+    "reset": "rimraf ./**/node_modules",
+    "lint": "modern lint",
+    "change": "modern change",
+    "bump": "modern bump",
+    "pre": "modern pre",
+    "change-status": "modern change-status",
+    "gen-release-note": "modern gen-release-note",
+    "release": "modern release",
+    "new": "modern new",
+    "upgrade": "modern upgrade",
+    "test": "modern test",
+    "test:update": "modern test --update-snapshot"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,mjs,cjs}": [
+      "node --max_old_space_size=8192 ./node_modules/eslint/bin/eslint.js --fix --color --cache --quiet"
+    ]
+  },
+  "eslintIgnore": [
+    "node_modules/",
+    "dist/"
+  ],
+  "dependencies": {
+    "@babel/core": "^7.23.2",
+    "@modern-js/utils": "^2.37.0"
+  },
+  "devDependencies": {
+    "@modern-js-app/eslint-config": "2.37.0",
+    "@modern-js/eslint-config": "2.37.0",
+    "@modern-js/module-tools": "2.37.0",
+    "@modern-js/tsconfig": "2.37.0",
+    "@types/babel__core": "^7.20.3",
+    "@types/jest": "~29.2.4",
+    "@types/node": "~16.11.7",
+    "@types/react": "~18.0.26",
+    "husky": "~8.0.1",
+    "lint-staged": "~13.1.0",
+    "prettier": "~2.8.1",
+    "rimraf": "~3.0.2",
+    "typescript": "~5.0.4",
+    "@modern-js/plugin-testing": "2.37.0"
+  },
+  "sideEffects": [],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "files": [
+    "./lib",
+    "./package.json",
+    "README.md"
+  ]
+}
