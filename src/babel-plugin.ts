@@ -1,4 +1,5 @@
 import { type PluginObj, type PluginPass, types as t } from '@babel/core';
+import { HTTP_REGEXP, HTTPS_REGEXP } from './regexp';
 
 export interface Options {
   http?: boolean;
@@ -15,8 +16,8 @@ export const encodeUrlExpression = (
   const { urls = [], filter, http = true, https = true } = options;
 
   if (
-    (http && originalValue.startsWith('http')) ||
-    (https && originalValue.startsWith('https')) ||
+    (http && HTTP_REGEXP.test(originalValue)) ||
+    (https && HTTPS_REGEXP.test(originalValue)) ||
     urls.includes(originalValue) ||
     filter?.(originalValue)
   ) {
