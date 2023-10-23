@@ -17,3 +17,5 @@ exports[`Default cases const urlObj = {a: 'https://example.com'} 1`] = `
 `;
 
 exports[`Default cases const urlObj = true ? 'https://example.com' : 'https://demo.com': const urlObj = true ? atob("aHR0cHM6Ly9leGFtcGxlLmNvbQ==") : atob("aHR0cHM6Ly9kZW1vLmNvbQ=="); 1`] = `"const urlObj = true ? atob("aHR0cHM6Ly9leGFtcGxlLmNvbQ==") : atob("aHR0cHM6Ly9kZW1vLmNvbQ==");"`;
+
+exports[`Default cases n.p="https://example.com": n.p = atob("aHR0cHM6Ly9leGFtcGxlLmNvbQ=="); 1`] = `"n.p = atob("aHR0cHM6Ly9leGFtcGxlLmNvbQ==");"`;

@@ -33,20 +33,18 @@ export default (): PluginObj => {
   return {
     name: 'encode-domain',
     visitor: {
-      ObjectProperty(nodePath, { opts }: PluginPass) {
-        if (t.isStringLiteral(nodePath.node.value)) {
-          nodePath.node.value = encodeUrlExpression(nodePath.node.value, opts);
+      ObjectProperty({ node }, { opts }: PluginPass) {
+        if (t.isStringLiteral(node.value)) {
+          node.value = encodeUrlExpression(node.value, opts);
         }
       },
-      VariableDeclarator(nodePath, { opts }) {
-        const { node } = nodePath;
+      VariableDeclarator({ node }, { opts }) {
         const { init } = node;
         if (t.isStringLiteral(init)) {
           node.init = encodeUrlExpression(init, opts);
         }
       },
-      ConditionalExpression(nodePath, { opts }) {
-        const { node } = nodePath;
+      ConditionalExpression({ node }, { opts }) {
         const { consequent, alternate } = node;
         if (t.isStringLiteral(consequent)) {
           node.consequent = encodeUrlExpression(consequent, opts);
@@ -56,14 +54,19 @@ export default (): PluginObj => {
           node.alternate = encodeUrlExpression(alternate, opts);
         }
       },
-      BinaryExpression(nodePath, { opts }) {
-        const { node } = nodePath;
+      BinaryExpression({ node }, { opts }) {
         if (t.isStringLiteral(node.left)) {
           node.left = encodeUrlExpression(node.left, opts);
         }
 
         if (t.isStringLiteral(node.right)) {
           node.right = encodeUrlExpression(node.right, opts);
+        }
+      },
+      AssignmentExpression({ node }, { opts }) {
+        const { right } = node;
+        if (t.isStringLiteral(right)) {
+          node.right = encodeUrlExpression(right, opts);
         }
       },
     },
