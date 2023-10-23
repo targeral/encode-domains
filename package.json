@@ -1,6 +1,6 @@
 {
   "name": "encode-domains",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "types": "./lib/cli.d.ts",
   "main": "./lib/cli.js",
   "exports": {

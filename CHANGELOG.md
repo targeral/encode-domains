@@ -1,5 +1,11 @@
 # encode-domains
 
+## 0.6.1
+
+### Patch Changes
+
+- 1f6b07d: fix: add object key parse
+
 ## 0.6.0
 
 ### Minor Changes
