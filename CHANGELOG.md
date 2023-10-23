@@ -1,5 +1,11 @@
 # encode-domains
 
+## 0.8.0
+
+### Minor Changes
+
+- 17d38ed: feat: support MemberExpression
+
 ## 0.7.0
 
 ### Minor Changes
