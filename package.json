@@ -1,6 +1,6 @@
 {
   "name": "encode-domains",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "types": "./lib/cli.d.ts",
   "main": "./lib/cli.js",
   "exports": {
@@ -58,7 +58,14 @@
     "typescript": "~5.0.4",
     "webpack": "^5.89.0"
   },
-  "sideEffects": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/targeral/encode-domains"
+  },
+  "bugs": {
+    "url": "https://github.com/targeral/encode-domains/issues"
+  },
+  "license": "MIT",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"

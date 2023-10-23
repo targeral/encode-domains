@@ -1,5 +1,11 @@
 # encode-domains
 
+## 0.4.1
+
+### Patch Changes
+
+- 4ba45f3: fix: for http and https url detection, use regular expressions instead of the `startWiths` api
+
 ## 0.4.0
 
 ### Minor Changes
