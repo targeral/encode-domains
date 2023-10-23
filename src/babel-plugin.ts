@@ -5,42 +5,59 @@ export interface Options {
   urls?: string[];
 }
 
+export const encodeUrlExpression = (
+  stringLiteral: t.StringLiteral,
+  options: Options,
+) => {
+  const { value: originalValue } = stringLiteral;
+  const { urls = [], filter } = options;
+  if (
+    originalValue.startsWith('http') ||
+    originalValue.startsWith('https') ||
+    urls.includes(originalValue) ||
+    filter?.(originalValue)
+  ) {
+    return t.callExpression(t.identifier('atob'), [
+      t.stringLiteral(btoa(originalValue)),
+    ]);
+  }
+
+  return stringLiteral;
+};
+
 export default (): PluginObj => {
   return {
     name: 'encode-domain',
     visitor: {
       ObjectProperty(nodePath, { opts }: PluginPass) {
-        const { filter, urls = [] } = opts as Options;
         if (t.isStringLiteral(nodePath.node.value)) {
-          const propertyValue = nodePath.node.value;
-
-          if (
-            propertyValue.value.startsWith('http') ||
-            propertyValue.value.startsWith('https') ||
-            urls.includes(propertyValue.value) ||
-            filter?.(propertyValue.value)
-          ) {
-            const originalValue = propertyValue.value;
-            nodePath.node.value = t.callExpression(t.identifier('atob'), [
-              t.stringLiteral(btoa(originalValue)),
-            ]);
-          }
+          nodePath.node.value = encodeUrlExpression(nodePath.node.value, opts);
         }
       },
       VariableDeclarator(nodePath, { opts }) {
-        const { filter, urls = [] } = opts as Options;
-        if (t.isStringLiteral(nodePath.node.init)) {
-          const originalValue = nodePath.node.init.value;
-          if (
-            originalValue.startsWith('http') ||
-            originalValue.startsWith('https') ||
-            urls.includes(originalValue) ||
-            filter?.(originalValue)
-          ) {
-            nodePath.node.init = t.callExpression(t.identifier('atob'), [
-              t.stringLiteral(btoa(originalValue)),
-            ]);
+        const { node } = nodePath;
+        const { init } = node;
+        if (t.isStringLiteral(init)) {
+          node.init = encodeUrlExpression(init, opts);
+        } else if (t.isConditionalExpression(init)) {
+          const { consequent, alternate } = init;
+          if (t.isStringLiteral(consequent)) {
+            init.consequent = encodeUrlExpression(consequent, opts);
           }
+
+          if (t.isStringLiteral(alternate)) {
+            init.alternate = encodeUrlExpression(alternate, opts);
+          }
+        }
+      },
+      BinaryExpression(nodePath, { opts }) {
+        const { node } = nodePath;
+        if (t.isStringLiteral(node.left)) {
+          node.left = encodeUrlExpression(node.left, opts);
+        }
+
+        if (t.isStringLiteral(node.right)) {
+          node.right = encodeUrlExpression(node.right, opts);
         }
       },
     },
