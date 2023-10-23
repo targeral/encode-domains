@@ -1,5 +1,11 @@
 # encode-domains
 
+## 0.3.1
+
+### Patch Changes
+
+- 2914049: fix: fix conditional expression
+
 ## 0.3.0
 
 ### Minor Changes
