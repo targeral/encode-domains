@@ -1,12 +1,12 @@
+import {
+  encodeDemoUrl,
+  encodeExmapleUrl,
+  exmapleUrl,
+  demoUrl,
+} from './constants';
 import { transformCodeAsync } from '@/sdk';
 
-const exmapleUrl = `https://example.com`;
-const encodeExmapleUrl = `atob("aHR0cHM6Ly9leGFtcGxlLmNvbQ==")`;
-
-const demoUrl = `https://demo.com`;
-const encodeDemoUrl = `atob("aHR0cHM6Ly9kZW1vLmNvbQ==")`;
-
-describe('Default cases', () => {
+describe('Base cases', () => {
   test(`const url = '${exmapleUrl}'`, async () => {
     const code = `const url = '${exmapleUrl}';`;
     const s = await transformCodeAsync(code);
@@ -48,12 +48,6 @@ describe('Default cases', () => {
     const s = await transformCodeAsync(code);
     expect(s).toMatchSnapshot(s);
     expect(s).toContain(`${encodeExmapleUrl}`);
-  });
-
-  test(`const urlObj = {a: '//example.com'} with urls option`, async () => {
-    const code = `const urlObj = {a: '//example.com'}`;
-    const s = await transformCodeAsync(code, { urls: ['//example.com'] });
-    expect(s).toMatchSnapshot();
   });
 
   // TODO: webpack test

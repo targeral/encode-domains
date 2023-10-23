@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Options cases const urlObj = {a: '//example.com'} with ignore option 1`] = `
+"const urlObj = {
+  a: atob("aHR0cDovL2V4YW1wbGUuY29t"),
+  b: 'http://demo.com'
+};"
+`;
+
+exports[`Options cases const urlObj = {a: '//example.com'} with match option 1`] = `
+"const urlObj = {
+  a: atob("Ly9leGFtcGxlLmNvbQ==")
+};"
+`;
+
+exports[`Options cases const urlObj = {a: '//example.com'} with urls option 1`] = `
+"const urlObj = {
+  a: atob("Ly9leGFtcGxlLmNvbQ==")
+};"
+`;

@@ -4,7 +4,8 @@ import { HTTP_REGEXP, HTTPS_REGEXP } from './regexp';
 export interface Options {
   http?: boolean;
   https?: boolean;
-  filter?: (value: string) => boolean;
+  ignore?: (value: string) => boolean;
+  match?: (value: string) => boolean;
   urls?: string[];
 }
 
@@ -13,13 +14,17 @@ export const encodeUrlExpression = (
   options: Options,
 ) => {
   const { value: originalValue } = stringLiteral;
-  const { urls = [], filter, http = true, https = true } = options;
+  const { urls = [], ignore, match, http = true, https = true } = options;
+
+  if (ignore?.(originalValue)) {
+    return stringLiteral;
+  }
 
   if (
     (http && HTTP_REGEXP.test(originalValue)) ||
     (https && HTTPS_REGEXP.test(originalValue)) ||
     urls.includes(originalValue) ||
-    filter?.(originalValue)
+    match?.(originalValue)
   ) {
     return t.callExpression(t.identifier('atob'), [
       t.stringLiteral(btoa(originalValue)),
