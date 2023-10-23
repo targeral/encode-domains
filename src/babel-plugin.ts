@@ -92,6 +92,13 @@ export default (): PluginObj => {
           node.argument = encodeUrlExpression(argument, opts);
         }
       },
+      // 'https://xxx'.xxxx
+      MemberExpression({ node }, { opts }) {
+        const { object } = node;
+        if (t.isStringLiteral(object)) {
+          node.object = encodeUrlExpression(object, opts);
+        }
+      },
     },
   };
 };

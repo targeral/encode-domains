@@ -1,5 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Base cases const a = () => "https://example.com".includes("http");: const a = () => atob("aHR0cHM6Ly9leGFtcGxlLmNvbQ==").include("http"); 1`] = `"const a = () => atob("aHR0cHM6Ly9leGFtcGxlLmNvbQ==").include("http");"`;
+
 exports[`Base cases const a = () => "https://example.com": const a = () => atob("aHR0cHM6Ly9leGFtcGxlLmNvbQ=="); 1`] = `"const a = () => atob("aHR0cHM6Ly9leGFtcGxlLmNvbQ==");"`;
 
 exports[`Base cases const a = () => { return "https://example.com"; }: const a = () => {

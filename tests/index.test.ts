@@ -64,5 +64,12 @@ describe('Base cases', () => {
     expect(s).toContain(`${encodeExmapleUrl}`);
   });
 
+  test(`const a = () => "${exmapleUrl}".includes("http");`, async () => {
+    const code = `const a = () => "${exmapleUrl}".include("http");`;
+    const s = await transformCodeAsync(code);
+    expect(s).toMatchSnapshot(s);
+    expect(s).toContain(`${encodeExmapleUrl}`);
+  });
+
   // TODO: webpack test
 });
