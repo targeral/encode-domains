@@ -1,5 +1,11 @@
 # encode-domains
 
+## 0.3.0
+
+### Minor Changes
+
+- c72cd0e: feat: support binary expression and conditional expression
+
 ## 0.2.0
 
 ### Minor Changes
