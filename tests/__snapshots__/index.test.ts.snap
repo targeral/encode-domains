@@ -1,5 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Base cases const a = () => "https://example.com": const a = () => atob("aHR0cHM6Ly9leGFtcGxlLmNvbQ=="); 1`] = `"const a = () => atob("aHR0cHM6Ly9leGFtcGxlLmNvbQ==");"`;
+
+exports[`Base cases const a = () => { return "https://example.com"; }: const a = () => {
+  return atob("aHR0cHM6Ly9leGFtcGxlLmNvbQ==");
+}; 1`] = `
+"const a = () => {
+  return atob("aHR0cHM6Ly9leGFtcGxlLmNvbQ==");
+};"
+`;
+
 exports[`Base cases const isSameUrl = 'https://example.com' === 'https://demo.com';: const isSameUrl = atob("aHR0cHM6Ly9leGFtcGxlLmNvbQ==") === atob("aHR0cHM6Ly9kZW1vLmNvbQ=="); 1`] = `"const isSameUrl = atob("aHR0cHM6Ly9leGFtcGxlLmNvbQ==") === atob("aHR0cHM6Ly9kZW1vLmNvbQ==");"`;
 
 exports[`Base cases const url = 'https://example.com' 1`] = `"const url = atob("aHR0cHM6Ly9leGFtcGxlLmNvbQ==");"`;

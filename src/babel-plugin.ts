@@ -79,6 +79,19 @@ export default (): PluginObj => {
           node.right = encodeUrlExpression(right, opts);
         }
       },
+      ArrowFunctionExpression({ node }, { opts }) {
+        const { body } = node;
+        // () => '';
+        if (t.isStringLiteral(body)) {
+          node.body = encodeUrlExpression(body, opts);
+        }
+      },
+      ReturnStatement({ node }, { opts }) {
+        const { argument } = node;
+        if (t.isStringLiteral(argument)) {
+          node.argument = encodeUrlExpression(argument, opts);
+        }
+      },
     },
   };
 };

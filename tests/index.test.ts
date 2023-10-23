@@ -50,5 +50,19 @@ describe('Base cases', () => {
     expect(s).toContain(`${encodeExmapleUrl}`);
   });
 
+  test(`const a = () => { return "${exmapleUrl}"; }`, async () => {
+    const code = `const a = () => { return "${exmapleUrl}"; }`;
+    const s = await transformCodeAsync(code);
+    expect(s).toMatchSnapshot(s);
+    expect(s).toContain(`${encodeExmapleUrl}`);
+  });
+
+  test(`const a = () => "${exmapleUrl}"`, async () => {
+    const code = `const a = () => "${exmapleUrl}"`;
+    const s = await transformCodeAsync(code);
+    expect(s).toMatchSnapshot(s);
+    expect(s).toContain(`${encodeExmapleUrl}`);
+  });
+
   // TODO: webpack test
 });
