@@ -39,15 +39,17 @@ export default (): PluginObj => {
         const { init } = node;
         if (t.isStringLiteral(init)) {
           node.init = encodeUrlExpression(init, opts);
-        } else if (t.isConditionalExpression(init)) {
-          const { consequent, alternate } = init;
-          if (t.isStringLiteral(consequent)) {
-            init.consequent = encodeUrlExpression(consequent, opts);
-          }
+        }
+      },
+      ConditionalExpression(nodePath, { opts }) {
+        const { node } = nodePath;
+        const { consequent, alternate } = node;
+        if (t.isStringLiteral(consequent)) {
+          node.consequent = encodeUrlExpression(consequent, opts);
+        }
 
-          if (t.isStringLiteral(alternate)) {
-            init.alternate = encodeUrlExpression(alternate, opts);
-          }
+        if (t.isStringLiteral(alternate)) {
+          node.alternate = encodeUrlExpression(alternate, opts);
         }
       },
       BinaryExpression(nodePath, { opts }) {
