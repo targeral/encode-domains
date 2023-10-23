@@ -39,6 +39,11 @@ export default (): PluginObj => {
     name: 'encode-domain',
     visitor: {
       ObjectProperty({ node }, { opts }: PluginPass) {
+        if (t.isStringLiteral(node.key)) {
+          node.key = encodeUrlExpression(node.key, opts);
+          node.computed = true;
+        }
+
         if (t.isStringLiteral(node.value)) {
           node.value = encodeUrlExpression(node.value, opts);
         }

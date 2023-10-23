@@ -18,3 +18,10 @@ exports[`Options cases const urlObj = {a: '//example.com'} with urls option 1`] 
   a: atob("Ly9leGFtcGxlLmNvbQ==")
 };"
 `;
+
+exports[`Options cases match option 1`] = `
+"const lr = {
+  localhost: "local",
+  [atob("aGctYm9lLmJ5dGVkYW5jZS5uZXQ=")]: "hg-boe"
+};"
+`;

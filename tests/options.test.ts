@@ -22,4 +22,12 @@ describe('Options cases', () => {
     });
     expect(s).toMatchSnapshot();
   });
+
+  test(`match option`, async () => {
+    const code = `const lr={localhost:"local","hg-boe.bytedance.net":"hg-boe"}`;
+    const s = await transformCodeAsync(code, {
+      match: value => /bytedance.net$/.test(value),
+    });
+    expect(s).toMatchSnapshot();
+  });
 });
