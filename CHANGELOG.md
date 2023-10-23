@@ -1,5 +1,11 @@
 # encode-domains
 
+## 0.6.0
+
+### Minor Changes
+
+- a91ac4c: feat: remove filter api and add ignore and match api
+
 ## 0.5.0
 
 ### Minor Changes
