@@ -1,5 +1,11 @@
 # encode-domains
 
+## 0.4.0
+
+### Minor Changes
+
+- 477b2e2: feat: add http and https options
+
 ## 0.3.1
 
 ### Patch Changes
