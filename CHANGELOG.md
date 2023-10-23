@@ -1,5 +1,11 @@
 # encode-domains
 
+## 0.7.0
+
+### Minor Changes
+
+- 8ac82ff: feat: support return statement
+
 ## 0.6.1
 
 ### Patch Changes
