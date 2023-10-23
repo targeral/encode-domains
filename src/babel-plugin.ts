@@ -1,6 +1,8 @@
 import { type PluginObj, type PluginPass, types as t } from '@babel/core';
 
 export interface Options {
+  http?: boolean;
+  https?: boolean;
   filter?: (value: string) => boolean;
   urls?: string[];
 }
@@ -10,10 +12,11 @@ export const encodeUrlExpression = (
   options: Options,
 ) => {
   const { value: originalValue } = stringLiteral;
-  const { urls = [], filter } = options;
+  const { urls = [], filter, http = true, https = true } = options;
+
   if (
-    originalValue.startsWith('http') ||
-    originalValue.startsWith('https') ||
+    (http && originalValue.startsWith('http')) ||
+    (https && originalValue.startsWith('https')) ||
     urls.includes(originalValue) ||
     filter?.(originalValue)
   ) {
